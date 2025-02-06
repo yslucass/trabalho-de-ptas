@@ -1,7 +1,13 @@
-import http from 'http'
+import express from 'express'
+import { router } from './routes/livrosRoutes.js'
 
-const server = http.createServer((req, res) => {
-    res.end("Hello Word")
+const app = express()
+
+app.use(express.json())
+
+app.use('/livros', router)
+
+app.listen(3333, ()=> {
+    console.log('Servidor rodando na porta 3333')
 })
 
-server.listen(3333)
